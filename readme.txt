@@ -5,11 +5,11 @@ Tags: medusa, wordpress, ecommerce, headless, storefront
 Requires at least: 5.6
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 0.3.2
+Stable tag: 0.3.3
 License: MIT
 License URI: https://github.com/Agilo/medusawp/blob/master/wordpress-plugin/LICENSE
 
-![](https://github.com/Agilo/medusawp/blob/master/.github/banner.png)
+[![MedusaWP](https://raw.githubusercontent.com/Agilo/medusawp/master/.github/banner.png)](https://github.com/Agilo/medusawp)
 
 MedusaWP enables you to use WordPress as a headless CMS or as a storefront for your Medusa shop.
 
@@ -145,8 +145,8 @@ We're sorry to hear that you're experiencing issues with the installation and se
 
 == Changelog ==
 
-= 1.0.0 =
-* Initial release.
+= 0.3.0 =
+* Initial public release.
 
 == Usage ==
 
