@@ -9,23 +9,23 @@
  * that starts the plugin.
  *
  * @package           MedusaWP
- * @link              https://github.com/Agilo/medusa-wp
- * @since             1.0.0
+ * @link              https://github.com/Agilo/medusawp
+ * @since             0.1.0
  * @author            Agilo
  * @copyright         2023 Agilo
  * @license           MIT
  *
  * @wordpress-plugin
  * Plugin Name:       MedusaWP
- * Plugin URI:        https://github.com/Agilo/medusa-wp
+ * Plugin URI:        https://github.com/Agilo/medusawp
  * Description:       Enables you to use WordPress as a headless CMS or as a storefront for your Medusa shop.
- * Version:           1.0.0
+ * Version:           0.3.1
  * Requires at least: 5.6
  * Requires PHP:      7.4
  * Author:            Agilo
  * Author URI:        https://agilo.co
  * License:           MIT
- * License URI:       https://github.com/Agilo/medusa-wp/blob/master/wordpress-plugin/LICENSE
+ * License URI:       https://github.com/Agilo/medusawp/blob/master/wordpress-plugin/LICENSE
  * Text Domain:       medusawp
  * Domain Path:       /languages
  */
@@ -43,11 +43,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
 require_once plugin_dir_path( __FILE__ ) . '/functions.php';
 
+\MedusaWP\Updater::init( __FILE__ );
 
 /**
  * The code that runs during plugin activation.
  *
- * @since  1.0.0
+ * @since  0.1.0
  * @return void
  */
 function activate_medusawp() {
@@ -57,7 +58,7 @@ function activate_medusawp() {
 /**
  * The code that runs during plugin deactivation.
  *
- * @since  1.0.0
+ * @since  0.1.0
  * @return void
  */
 function deactivate_medusawp() {
@@ -92,7 +93,7 @@ register_deactivation_hook( __FILE__, 'deactivate_medusawp' );
 /**
  * Begins execution of the plugin.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 function run_medusawp() {
 	$plugin = new Plugin();

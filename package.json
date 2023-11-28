@@ -1,7 +1,6 @@
 {
   "name": "medusawp-admin",
   "private": true,
-  "version": "0.1.0",
   "description": "MedusaWP is a WordPress plugin that enables you to use WordPress as a headless CMS or as a storefront for your Medusa shop.",
   "keywords": [
     "medusa",
@@ -11,8 +10,8 @@
     "storefront"
   ],
   "license": "MIT",
-  "author": "Agilo <info@agilo.co> (https://agilo.co/)",
-  "repository": "github:Agilo/medusa-wp",
+  "author": "Agilo <hello@agilo.co> (https://agilo.co/)",
+  "repository": "github:Agilo/medusawp",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -24,6 +23,7 @@
     "@fontsource/inter": "^5.0.15",
     "@hookform/resolvers": "^3.3.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
+    "@radix-ui/react-collapsible": "^1.0.3",
     "@radix-ui/react-popover": "^1.0.7",
     "@tanstack/react-query": "^4.36.1",
     "react": "^18.2.0",

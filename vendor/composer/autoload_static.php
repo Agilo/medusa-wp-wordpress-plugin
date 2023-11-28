@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1f215773c951ca4243054906398db7a8
+class ComposerStaticInitfde47a6b721b01ad09afebdf31e40d05
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -25,6 +25,7 @@ class ComposerStaticInit1f215773c951ca4243054906398db7a8
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        '45a16669595eb3c0a9e2994e57fc3188' => __DIR__ . '/..' . '/yahnis-elsts/plugin-update-checker/load-v5p3.php',
         'fe07cef9d9538590fcd28d17b076e51f' => __DIR__ . '/..' . '/woocommerce/action-scheduler/action-scheduler.php',
     );
 
@@ -1035,9 +1036,9 @@ class ComposerStaticInit1f215773c951ca4243054906398db7a8
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1f215773c951ca4243054906398db7a8::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1f215773c951ca4243054906398db7a8::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1f215773c951ca4243054906398db7a8::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitfde47a6b721b01ad09afebdf31e40d05::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitfde47a6b721b01ad09afebdf31e40d05::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitfde47a6b721b01ad09afebdf31e40d05::$classMap;
 
         }, null, ClassLoader::class);
     }

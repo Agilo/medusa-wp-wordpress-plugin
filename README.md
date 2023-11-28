@@ -12,6 +12,14 @@
   <a href="./LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue" alt="MedusaWP is released under the MIT license." />
   </a>
+  <a href="https://github.com/Agilo/medusawp?tab=readme-ov-file#contributing">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome!" />
+  </a>
+  <a href="https://twitter.com/intent/follow?screen_name=Agilo">
+    <img src="https://img.shields.io/twitter/follow/Agilo" alt="X (formerly Twitter) Follow">
+  </a>
+</p>
+<p align="center">
   <a href="https://nodejs.org/" target="_blank">
     <img src="https://img.shields.io/badge/Node.js-%5E20-brightgreen" alt="Node.js ^20">
   </a>
@@ -23,9 +31,6 @@
   </a>
   <a href="https://getcomposer.org/doc/01-basic-usage.md" target="_blank">
     <img src="https://img.shields.io/badge/Composer-%5E1-orange" alt="Composer ^1">
-  </a>
-  <a href="https://twitter.com/intent/follow?screen_name=Agilo">
-    <img src="https://img.shields.io/twitter/follow/Agilo" alt="X (formerly Twitter) Follow">
   </a>
 </p>
 
@@ -96,7 +101,7 @@ const plugins = [
   {
     resolve: `medusa-plugin-wordpress`,
     options: {
-      sync_options: {  
+      sync_options: {
         attempts: 5,
         backoff: {
           type: 'exponential',
@@ -151,12 +156,12 @@ npm run start
 
 3. Connect your Medusa e-commerce store and your WordPress instance. On the default MedusaWP plugin screen enter your Medusa shop URL and credentials - email and password and press "Connect" button.
 
-> **Note**
+> [!NOTE]  
 > If necessary, you can always disconnect from your Medusa shop by opening a dropdown in the upper-right corner, pressing the "Disconnect" button, and confirming your decision.
 
 4. When the connection with Medusa is established, sync your Medusa e-commerce data with WordPress by clicking the "Sync" button. You can also choose to import Medusa thumbnails into the WordPress Media Library directly with the data sync (this may slightly slow down your data sync process), or you can import thumbnails separately later using the "Import" button.
 
-> **Note**
+> [!NOTE]  
 > It is possible to remove all your synced Medusa data from your WordPress site at any time using the "Remove" button. We recommend that you backup your data before proceeding with this action.
 
 5. Once the data synchronization is complete, configure the default settings of the MedusaWP plugin to suit your needs. In the dropdown, you can select the default country, which will be used to automatically create a cart in the corresponding region when a customer lands on the site.
@@ -169,7 +174,7 @@ That's it! You have successfully installed and set up the MedusaWP plugin. Enjoy
 
 We welcome contributions from the community to help make this project even better. Please feel free to open pull requests or issues. Thank you for considering contributing, and we look forward to collaborating with you!
 
-Below you can find the [plugin development guide](#plugin-development) that will help you get started with running MedusaWP in your local environment. 
+Below you can find the [plugin development guide](#plugin-development) that will help you get started with running MedusaWP in your local environment.
 
 ### Plugin Development
 
@@ -183,27 +188,29 @@ Below you can find the [plugin development guide](#plugin-development) that will
 
 After you have installed the requirements, you will need to add a host entry for the project by appending the following line to your `/etc/hosts` file:
 ```
-127.0.0.1    medusa-wp.test
+127.0.0.1    medusawp.test
 ```
 
 #### Running Locally
 
 Follow these step-by-step instructions to run the project locally:
 
-1. `git clone https://github.com/Agilo/medusa-wp.git` - clone the repo
-2. `cd Agilo/medusa-wp/` - position into the project directory
-3. `npm i` - install all dependencies
+1. Fulfill everything mentioned in the prerequisites above
+2. `git clone https://github.com/Agilo/medusawp.git` - clone the repo
+3. `cd medusawp` - position into the project directory
 4. `cp .env.example .env` - set up docker-compose environment variables
 5. `cp ./dev/medusa/.env.example ./dev/medusa/.env` - set up Medusa environment variables
-6. `npm run addcert -w wordpress` - add a self-signed certificate for `medusa-wp.test`
-7. `npm run build -w wordpress` - build WordPress
-8. `composer install -d ./wordpress-plugin` - install Composer dependencies for the WordPress plugin
-9. `docker-compose --profile wp --profile medusa up` - start WordPress and Medusa Docker containers
-10. `npm run seed -w medusa` - seed Medusa DB
-11. `npm run migrate -w medusa` - run Medusa migrations
-12. `npm start` - build the Medusa plugin and start the Medusa dev server and Medusa plugin watcher
+6. `npm i` - install all dependencies
+7. `npm run addcert -w wordpress` - add a self-signed certificate for `medusawp.test`
+8. `npm run build -w wordpress` - build WordPress
+9. `composer install -d ./wordpress-plugin` - install Composer dependencies for the WordPress plugin
+10. `docker-compose --profile wp --profile medusa up` - start WordPress and Medusa Docker containers
+11. Open a new terminal tab
+12. `npm run seed -w medusa` - seed Medusa DB
+13. `npm run migrate -w medusa` - run Medusa migrations
+14. `npm start` - build the Medusa plugin and start the Medusa dev server and Medusa plugin watcher
 
-WordPress is now available at https://medusa-wp.test and Medusa Admin dashboard at http://localhost:9000/app.
+WordPress is now available at https://medusawp.test and Medusa Admin dashboard at http://localhost:9000/app.
 
 Default credentials for Medusa Admin are:
 ```
@@ -227,7 +234,7 @@ admin
 - `npm run build -w medusa` - build Medusa
 - `npm run migrate -w medusa` - run Medusa migrations
 - `npm start -w medusa` - start the Medusa development server
-- `npm run addcert -w wordpress` - add a self-signed certificate for `medusa-wp.test`
+- `npm run addcert -w wordpress` - add a self-signed certificate for `medusawp.test`
 - `npm run build -w wordpress` - build WordPress
 
 #### Docker Services
@@ -240,7 +247,7 @@ Most of the time, you will want to run both profiles at the same time. But if yo
 
 ##### WordPress
 
-- `nginx` - Nginx web server that serves WordPress on https://medusa-wp.test
+- `nginx` - Nginx web server that serves WordPress on https://medusawp.test
 - `php` - PHP-FPM
 - `db` - MariaDB database server for WordPress available on localhost:3306, you can change credentials and port in `.env` file
 - `phpmyadmin` - phpMyAdmin available on http://localhost:8080
@@ -266,4 +273,4 @@ This project is licensed under the [MIT License](./LICENSE).
 ## Credits
 
 MedusaWP is developed and maintained by [AGILO](https://agilo.co/).  
-Huge thanks to [all contributors](https://github.com/Agilo/medusa-wp/graphs/contributors).
+Huge thanks to [all contributors](https://github.com/Agilo/medusawp/graphs/contributors).

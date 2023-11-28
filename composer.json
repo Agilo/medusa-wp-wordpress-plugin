@@ -3,7 +3,11 @@
   "description": "MedusaWP is a WordPress plugin that enables you to use WordPress as a headless CMS or as a storefront for your Medusa shop.",
   "type": "wordpress-plugin",
   "keywords": [
-    "medusa", "wordpress", "ecommerce", "headless", "storefront"
+    "medusa",
+    "wordpress",
+    "ecommerce",
+    "headless",
+    "storefront"
   ],
   "license": "MIT",
   "authors": [
@@ -22,7 +26,8 @@
     "guzzlehttp/guzzle": "^7.3",
     "guzzlehttp/psr7": "^1.7 || ^2.0",
     "illuminate/validation": "^8.83",
-    "woocommerce/action-scheduler": "*"
+    "woocommerce/action-scheduler": "^3.7",
+    "yahnis-elsts/plugin-update-checker": "^5.3"
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "*",
@@ -54,11 +59,11 @@
       "type": "package",
       "package": {
         "name": "woocommerce/action-scheduler",
-        "version": "3.6.4",
+        "version": "3.7.0",
         "source": {
           "url": "https://github.com/woocommerce/action-scheduler.git",
           "type": "git",
-          "reference": "3.6.4"
+          "reference": "3.7.0"
         }
       }
     }
