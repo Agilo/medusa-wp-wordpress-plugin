@@ -5,7 +5,7 @@ Tags: medusa, wordpress, ecommerce, headless, storefront
 Requires at least: 5.6
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 License: MIT
 License URI: https://github.com/Agilo/medusawp/blob/master/wordpress-plugin/LICENSE
 
@@ -51,7 +51,7 @@ Unlock the full potential of your Medusa store with the MedusaWP plugin and stre
 
 = Get In Touch =
 
-Got any suggestions, questions or simply want to get in touch? Email us at [info@agilo.co](mailto:info@agilo.co) or [give us a follow on Twitter/X](https://twitter.com/intent/follow?screen_name=Agilo)!
+Got any suggestions, questions or simply want to get in touch? Email us at [hello@agilo.co](mailto:hello@agilo.co) or [give us a follow on Twitter/X](https://twitter.com/intent/follow?screen_name=Agilo)!
 
 == Installation ==
 

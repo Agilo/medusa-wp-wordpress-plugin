@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'agilo/medusawp',
-        'pretty_version' => 'v0.3.1',
-        'version' => '0.3.1.0',
-        'reference' => 'fd92f158f14f4525c99447659774081714f4b775',
+        'pretty_version' => 'v0.3.2',
+        'version' => '0.3.2.0',
+        'reference' => '8f4e8c61908ab43ef186beef284c68facc9f58c1',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'agilo/medusawp' => array(
-            'pretty_version' => 'v0.3.1',
-            'version' => '0.3.1.0',
-            'reference' => 'fd92f158f14f4525c99447659774081714f4b775',
+            'pretty_version' => 'v0.3.2',
+            'version' => '0.3.2.0',
+            'reference' => '8f4e8c61908ab43ef186beef284c68facc9f58c1',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
