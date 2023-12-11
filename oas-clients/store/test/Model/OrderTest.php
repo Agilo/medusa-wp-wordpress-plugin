@@ -440,6 +440,15 @@ class OrderTest extends TestCase
     }
 
     /**
+     * Test attribute "shipping_tax_total"
+     */
+    public function testPropertyShippingTaxTotal()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "raw_discount_total"
      */
     public function testPropertyRawDiscountTotal()
@@ -461,6 +470,15 @@ class OrderTest extends TestCase
      * Test attribute "tax_total"
      */
     public function testPropertyTaxTotal()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "item_tax_total"
+     */
+    public function testPropertyItemTaxTotal()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

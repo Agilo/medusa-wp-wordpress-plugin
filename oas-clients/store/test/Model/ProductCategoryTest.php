@@ -98,6 +98,15 @@ class ProductCategoryTest extends TestCase
     }
 
     /**
+     * Test attribute "description"
+     */
+    public function testPropertyDescription()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "handle"
      */
     public function testPropertyHandle()
@@ -191,6 +200,15 @@ class ProductCategoryTest extends TestCase
      * Test attribute "updated_at"
      */
     public function testPropertyUpdatedAt()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "metadata"
+     */
+    public function testPropertyMetadata()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

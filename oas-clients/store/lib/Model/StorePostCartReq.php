@@ -35,6 +35,7 @@ use \MedusaWP\MedusaClient\Store\ObjectSerializer;
  * StorePostCartReq Class Doc Comment
  *
  * @category Class
+ * @description The details of the cart to be created.
  * @package  MedusaWP\MedusaClient\Store
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -384,7 +385,7 @@ class StorePostCartReq implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country_code
      *
-     * @param string|null $country_code The 2 character ISO country code to create the Cart in. Setting this parameter will set the country code of the shipping address.
+     * @param string|null $country_code The two character ISO country code to create the Cart in. Setting this parameter will set the country code of the shipping address.
      *
      * @return self
      */

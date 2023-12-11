@@ -98,9 +98,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'sales_channel_id' => 'string',
         'sales_channel' => '\MedusaWP\MedusaClient\Store\Model\SalesChannel',
         'shipping_total' => 'int',
+        'shipping_tax_total' => 'int',
         'raw_discount_total' => 'int',
         'discount_total' => 'int',
         'tax_total' => 'int',
+        'item_tax_total' => 'int',
         'refunded_total' => 'int',
         'total' => 'int',
         'subtotal' => 'int',
@@ -162,9 +164,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'sales_channel_id' => null,
         'sales_channel' => null,
         'shipping_total' => null,
+        'shipping_tax_total' => null,
         'raw_discount_total' => null,
         'discount_total' => null,
         'tax_total' => null,
+        'item_tax_total' => null,
         'refunded_total' => null,
         'total' => null,
         'subtotal' => null,
@@ -223,10 +227,12 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
 		'external_id' => true,
 		'sales_channel_id' => true,
 		'sales_channel' => false,
-		'shipping_total' => false,
+		'shipping_total' => true,
+		'shipping_tax_total' => false,
 		'raw_discount_total' => false,
 		'discount_total' => false,
 		'tax_total' => false,
+		'item_tax_total' => true,
 		'refunded_total' => false,
 		'total' => false,
 		'subtotal' => false,
@@ -366,9 +372,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'sales_channel_id' => 'sales_channel_id',
         'sales_channel' => 'sales_channel',
         'shipping_total' => 'shipping_total',
+        'shipping_tax_total' => 'shipping_tax_total',
         'raw_discount_total' => 'raw_discount_total',
         'discount_total' => 'discount_total',
         'tax_total' => 'tax_total',
+        'item_tax_total' => 'item_tax_total',
         'refunded_total' => 'refunded_total',
         'total' => 'total',
         'subtotal' => 'subtotal',
@@ -428,9 +436,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'sales_channel_id' => 'setSalesChannelId',
         'sales_channel' => 'setSalesChannel',
         'shipping_total' => 'setShippingTotal',
+        'shipping_tax_total' => 'setShippingTaxTotal',
         'raw_discount_total' => 'setRawDiscountTotal',
         'discount_total' => 'setDiscountTotal',
         'tax_total' => 'setTaxTotal',
+        'item_tax_total' => 'setItemTaxTotal',
         'refunded_total' => 'setRefundedTotal',
         'total' => 'setTotal',
         'subtotal' => 'setSubtotal',
@@ -490,9 +500,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'sales_channel_id' => 'getSalesChannelId',
         'sales_channel' => 'getSalesChannel',
         'shipping_total' => 'getShippingTotal',
+        'shipping_tax_total' => 'getShippingTaxTotal',
         'raw_discount_total' => 'getRawDiscountTotal',
         'discount_total' => 'getDiscountTotal',
         'tax_total' => 'getTaxTotal',
+        'item_tax_total' => 'getItemTaxTotal',
         'refunded_total' => 'getRefundedTotal',
         'total' => 'getTotal',
         'subtotal' => 'getSubtotal',
@@ -678,9 +690,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('sales_channel_id', $data ?? [], null);
         $this->setIfExists('sales_channel', $data ?? [], null);
         $this->setIfExists('shipping_total', $data ?? [], null);
+        $this->setIfExists('shipping_tax_total', $data ?? [], null);
         $this->setIfExists('raw_discount_total', $data ?? [], null);
         $this->setIfExists('discount_total', $data ?? [], null);
         $this->setIfExists('tax_total', $data ?? [], null);
+        $this->setIfExists('item_tax_total', $data ?? [], null);
         $this->setIfExists('refunded_total', $data ?? [], null);
         $this->setIfExists('total', $data ?? [], null);
         $this->setIfExists('subtotal', $data ?? [], null);
@@ -1999,9 +2013,43 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShippingTotal($shipping_total)
     {
         if (is_null($shipping_total)) {
-            throw new \InvalidArgumentException('non-nullable shipping_total cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_total');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_total', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_total'] = $shipping_total;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipping_tax_total
+     *
+     * @return int|null
+     */
+    public function getShippingTaxTotal()
+    {
+        return $this->container['shipping_tax_total'];
+    }
+
+    /**
+     * Sets shipping_tax_total
+     *
+     * @param int|null $shipping_tax_total The tax total applied on shipping
+     *
+     * @return self
+     */
+    public function setShippingTaxTotal($shipping_tax_total)
+    {
+        if (is_null($shipping_tax_total)) {
+            throw new \InvalidArgumentException('non-nullable shipping_tax_total cannot be null');
+        }
+        $this->container['shipping_tax_total'] = $shipping_tax_total;
 
         return $this;
     }
@@ -2083,6 +2131,40 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable tax_total cannot be null');
         }
         $this->container['tax_total'] = $tax_total;
+
+        return $this;
+    }
+
+    /**
+     * Gets item_tax_total
+     *
+     * @return int|null
+     */
+    public function getItemTaxTotal()
+    {
+        return $this->container['item_tax_total'];
+    }
+
+    /**
+     * Sets item_tax_total
+     *
+     * @param int|null $item_tax_total The tax total applied on items
+     *
+     * @return self
+     */
+    public function setItemTaxTotal($item_tax_total)
+    {
+        if (is_null($item_tax_total)) {
+            array_push($this->openAPINullablesSetToNull, 'item_tax_total');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_tax_total', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['item_tax_total'] = $item_tax_total;
 
         return $this;
     }

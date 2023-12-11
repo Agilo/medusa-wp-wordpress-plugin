@@ -519,7 +519,7 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency_code
      *
-     * @param string $currency_code The 3 character currency code used in the region.
+     * @param string $currency_code The three character currency code used in the region.
      *
      * @return self
      */

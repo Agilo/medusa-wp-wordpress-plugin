@@ -756,7 +756,7 @@ class PaymentCollection implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets currency_code
      *
-     * @param string $currency_code The 3 character ISO code for the currency this payment collection is associated with.
+     * @param string $currency_code The three character ISO code for the currency this payment collection is associated with.
      *
      * @return self
      */

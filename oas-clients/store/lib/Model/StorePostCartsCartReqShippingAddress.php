@@ -454,7 +454,7 @@ class StorePostCartsCartReqShippingAddress implements ModelInterface, ArrayAcces
     /**
      * Sets company
      *
-     * @param string|null $company company
+     * @param string|null $company Company
      *
      * @return self
      */

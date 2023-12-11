@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * StorePostCartReqTest Class Doc Comment
  *
  * @category    Class
- * @description StorePostCartReq
+ * @description The details of the cart to be created.
  * @package     MedusaWP\MedusaClient\Store
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

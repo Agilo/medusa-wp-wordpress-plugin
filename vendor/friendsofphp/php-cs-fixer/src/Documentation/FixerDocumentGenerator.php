@@ -203,15 +203,7 @@ final class FixerDocumentGenerator
             }
         }
 
-        $ruleSetConfigs = [];
-
-        foreach (RuleSets::getSetDefinitionNames() as $set) {
-            $ruleSet = new RuleSet([$set => true]);
-
-            if ($ruleSet->hasRule($name)) {
-                $ruleSetConfigs[$set] = $ruleSet->getRuleConfiguration($name);
-            }
-        }
+        $ruleSetConfigs = self::getSetsOfRule($name);
 
         if ([] !== $ruleSetConfigs) {
             $plural = 1 !== \count($ruleSetConfigs) ? 's' : '';
@@ -243,7 +235,7 @@ final class FixerDocumentGenerator
         $fileName = $reflectionObject->getFileName();
         $fileName = str_replace('\\', '/', $fileName);
         $fileName = substr($fileName, strrpos($fileName, '/src/Fixer/') + 1);
-        $fileName = "`{$className} <./../{$fileName}>`_";
+        $fileName = "`{$className} <./../../../{$fileName}>`_";
 
         $doc .= <<<RST
 
@@ -253,7 +245,29 @@ final class FixerDocumentGenerator
             {$fileName}
             RST;
 
+        $doc = str_replace("\t", '<TAB>', $doc);
+
         return "{$doc}\n";
+    }
+
+    /**
+     * @internal
+     *
+     * @return array<string, null|array<string, mixed>>
+     */
+    public static function getSetsOfRule(string $ruleName): array
+    {
+        $ruleSetConfigs = [];
+
+        foreach (RuleSets::getSetDefinitionNames() as $set) {
+            $ruleSet = new RuleSet([$set => true]);
+
+            if ($ruleSet->hasRule($ruleName)) {
+                $ruleSetConfigs[$set] = $ruleSet->getRuleConfiguration($ruleName);
+            }
+        }
+
+        return $ruleSetConfigs;
     }
 
     /**
@@ -267,7 +281,7 @@ final class FixerDocumentGenerator
             'Phpdoc' => 'PHPDoc',
         ];
 
-        usort($fixers, static fn (FixerInterface $a, FixerInterface $b): int => strcmp(\get_class($a), \get_class($b)));
+        usort($fixers, static fn (FixerInterface $a, FixerInterface $b): int => \get_class($a) <=> \get_class($b));
 
         $documentation = <<<'RST'
             =======================

@@ -60,6 +60,7 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
+        'description' => 'string',
         'handle' => 'string',
         'mpath' => 'string',
         'is_internal' => 'bool',
@@ -70,7 +71,8 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_category' => '\MedusaWP\MedusaClient\Store\Model\ProductCategory',
         'products' => '\MedusaWP\MedusaClient\Store\Model\Product[]',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'updated_at' => '\DateTime',
+        'metadata' => 'object'
     ];
 
     /**
@@ -83,6 +85,7 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
+        'description' => null,
         'handle' => null,
         'mpath' => null,
         'is_internal' => null,
@@ -93,7 +96,8 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_category' => null,
         'products' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'updated_at' => 'date-time',
+        'metadata' => null
     ];
 
     /**
@@ -104,6 +108,7 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'id' => false,
 		'name' => false,
+		'description' => false,
 		'handle' => false,
 		'mpath' => true,
 		'is_internal' => false,
@@ -114,7 +119,8 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
 		'parent_category' => false,
 		'products' => false,
 		'created_at' => false,
-		'updated_at' => false
+		'updated_at' => false,
+		'metadata' => true
     ];
 
     /**
@@ -205,6 +211,7 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
+        'description' => 'description',
         'handle' => 'handle',
         'mpath' => 'mpath',
         'is_internal' => 'is_internal',
@@ -215,7 +222,8 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_category' => 'parent_category',
         'products' => 'products',
         'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'updated_at' => 'updated_at',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -226,6 +234,7 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
+        'description' => 'setDescription',
         'handle' => 'setHandle',
         'mpath' => 'setMpath',
         'is_internal' => 'setIsInternal',
@@ -236,7 +245,8 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_category' => 'setParentCategory',
         'products' => 'setProducts',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at' => 'setUpdatedAt',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -247,6 +257,7 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
+        'description' => 'getDescription',
         'handle' => 'getHandle',
         'mpath' => 'getMpath',
         'is_internal' => 'getIsInternal',
@@ -257,7 +268,8 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_category' => 'getParentCategory',
         'products' => 'getProducts',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at' => 'getUpdatedAt',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -319,6 +331,7 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], '');
         $this->setIfExists('handle', $data ?? [], null);
         $this->setIfExists('mpath', $data ?? [], null);
         $this->setIfExists('is_internal', $data ?? [], false);
@@ -330,6 +343,7 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('products', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -388,6 +402,9 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['metadata'] === null) {
+            $invalidProperties[] = "'metadata' can't be null";
         }
         return $invalidProperties;
     }
@@ -454,6 +471,33 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description The product category's description.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
 
         return $this;
     }
@@ -765,6 +809,40 @@ class ProductCategory implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return object
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param object $metadata An optional key-value map with additional details
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

@@ -454,7 +454,7 @@ class AddressPayload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets company
      *
-     * @param string|null $company company
+     * @param string|null $company Company
      *
      * @return self
      */

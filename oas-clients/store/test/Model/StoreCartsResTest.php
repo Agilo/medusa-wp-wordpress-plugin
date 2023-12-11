@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * StoreCartsResTest Class Doc Comment
  *
  * @category    Class
- * @description StoreCartsRes
+ * @description The cart&#39;s details.
  * @package     MedusaWP\MedusaClient\Store
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
