@@ -66,7 +66,10 @@ class SalesChannel implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'deleted_at' => '\DateTime',
-        'metadata' => 'object'
+        'metadata' => 'object',
+        'carts' => '\MedusaWP\MedusaClient\Store\Model\Cart[]',
+        'orders' => '\MedusaWP\MedusaClient\Store\Model\Order[]',
+        'publishable_keys' => '\MedusaWP\MedusaClient\Store\Model\PublishableApiKey[]'
     ];
 
     /**
@@ -85,7 +88,10 @@ class SalesChannel implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
         'deleted_at' => 'date-time',
-        'metadata' => null
+        'metadata' => null,
+        'carts' => null,
+        'orders' => null,
+        'publishable_keys' => null
     ];
 
     /**
@@ -102,7 +108,10 @@ class SalesChannel implements ModelInterface, ArrayAccess, \JsonSerializable
 		'created_at' => false,
 		'updated_at' => false,
 		'deleted_at' => true,
-		'metadata' => true
+		'metadata' => true,
+		'carts' => true,
+		'orders' => true,
+		'publishable_keys' => true
     ];
 
     /**
@@ -199,7 +208,10 @@ class SalesChannel implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'created_at',
         'updated_at' => 'updated_at',
         'deleted_at' => 'deleted_at',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'carts' => 'carts',
+        'orders' => 'orders',
+        'publishable_keys' => 'publishableKeys'
     ];
 
     /**
@@ -216,7 +228,10 @@ class SalesChannel implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'deleted_at' => 'setDeletedAt',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'carts' => 'setCarts',
+        'orders' => 'setOrders',
+        'publishable_keys' => 'setPublishableKeys'
     ];
 
     /**
@@ -233,7 +248,10 @@ class SalesChannel implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'deleted_at' => 'getDeletedAt',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'carts' => 'getCarts',
+        'orders' => 'getOrders',
+        'publishable_keys' => 'getPublishableKeys'
     ];
 
     /**
@@ -302,6 +320,9 @@ class SalesChannel implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('deleted_at', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('carts', $data ?? [], null);
+        $this->setIfExists('orders', $data ?? [], null);
+        $this->setIfExists('publishable_keys', $data ?? [], null);
     }
 
     /**
@@ -627,6 +648,108 @@ class SalesChannel implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets carts
+     *
+     * @return \MedusaWP\MedusaClient\Store\Model\Cart[]|null
+     */
+    public function getCarts()
+    {
+        return $this->container['carts'];
+    }
+
+    /**
+     * Sets carts
+     *
+     * @param \MedusaWP\MedusaClient\Store\Model\Cart[]|null $carts The associated carts.
+     *
+     * @return self
+     */
+    public function setCarts($carts)
+    {
+        if (is_null($carts)) {
+            array_push($this->openAPINullablesSetToNull, 'carts');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carts', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['carts'] = $carts;
+
+        return $this;
+    }
+
+    /**
+     * Gets orders
+     *
+     * @return \MedusaWP\MedusaClient\Store\Model\Order[]|null
+     */
+    public function getOrders()
+    {
+        return $this->container['orders'];
+    }
+
+    /**
+     * Sets orders
+     *
+     * @param \MedusaWP\MedusaClient\Store\Model\Order[]|null $orders The associated orders.
+     *
+     * @return self
+     */
+    public function setOrders($orders)
+    {
+        if (is_null($orders)) {
+            array_push($this->openAPINullablesSetToNull, 'orders');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('orders', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['orders'] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Gets publishable_keys
+     *
+     * @return \MedusaWP\MedusaClient\Store\Model\PublishableApiKey[]|null
+     */
+    public function getPublishableKeys()
+    {
+        return $this->container['publishable_keys'];
+    }
+
+    /**
+     * Sets publishable_keys
+     *
+     * @param \MedusaWP\MedusaClient\Store\Model\PublishableApiKey[]|null $publishable_keys The associated publishable API keys.
+     *
+     * @return self
+     */
+    public function setPublishableKeys($publishable_keys)
+    {
+        if (is_null($publishable_keys)) {
+            array_push($this->openAPINullablesSetToNull, 'publishable_keys');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('publishable_keys', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['publishable_keys'] = $publishable_keys;
 
         return $this;
     }

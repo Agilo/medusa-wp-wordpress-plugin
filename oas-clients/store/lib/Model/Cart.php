@@ -98,7 +98,8 @@ class Cart implements ModelInterface, ArrayAccess, \JsonSerializable
         'subtotal' => 'int',
         'refundable_amount' => 'int',
         'gift_card_total' => 'int',
-        'gift_card_tax_total' => 'int'
+        'gift_card_tax_total' => 'int',
+        'sales_channels' => '\MedusaWP\MedusaClient\Store\Model\SalesChannel[]'
     ];
 
     /**
@@ -149,7 +150,8 @@ class Cart implements ModelInterface, ArrayAccess, \JsonSerializable
         'subtotal' => null,
         'refundable_amount' => null,
         'gift_card_total' => null,
-        'gift_card_tax_total' => null
+        'gift_card_tax_total' => null,
+        'sales_channels' => null
     ];
 
     /**
@@ -198,7 +200,8 @@ class Cart implements ModelInterface, ArrayAccess, \JsonSerializable
 		'subtotal' => false,
 		'refundable_amount' => false,
 		'gift_card_total' => false,
-		'gift_card_tax_total' => false
+		'gift_card_tax_total' => false,
+		'sales_channels' => true
     ];
 
     /**
@@ -327,7 +330,8 @@ class Cart implements ModelInterface, ArrayAccess, \JsonSerializable
         'subtotal' => 'subtotal',
         'refundable_amount' => 'refundable_amount',
         'gift_card_total' => 'gift_card_total',
-        'gift_card_tax_total' => 'gift_card_tax_total'
+        'gift_card_tax_total' => 'gift_card_tax_total',
+        'sales_channels' => 'sales_channels'
     ];
 
     /**
@@ -376,7 +380,8 @@ class Cart implements ModelInterface, ArrayAccess, \JsonSerializable
         'subtotal' => 'setSubtotal',
         'refundable_amount' => 'setRefundableAmount',
         'gift_card_total' => 'setGiftCardTotal',
-        'gift_card_tax_total' => 'setGiftCardTaxTotal'
+        'gift_card_tax_total' => 'setGiftCardTaxTotal',
+        'sales_channels' => 'setSalesChannels'
     ];
 
     /**
@@ -425,7 +430,8 @@ class Cart implements ModelInterface, ArrayAccess, \JsonSerializable
         'subtotal' => 'getSubtotal',
         'refundable_amount' => 'getRefundableAmount',
         'gift_card_total' => 'getGiftCardTotal',
-        'gift_card_tax_total' => 'getGiftCardTaxTotal'
+        'gift_card_tax_total' => 'getGiftCardTaxTotal',
+        'sales_channels' => 'getSalesChannels'
     ];
 
     /**
@@ -547,6 +553,7 @@ class Cart implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('refundable_amount', $data ?? [], null);
         $this->setIfExists('gift_card_total', $data ?? [], null);
         $this->setIfExists('gift_card_tax_total', $data ?? [], null);
+        $this->setIfExists('sales_channels', $data ?? [], null);
     }
 
     /**
@@ -1848,6 +1855,40 @@ class Cart implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable gift_card_tax_total cannot be null');
         }
         $this->container['gift_card_tax_total'] = $gift_card_tax_total;
+
+        return $this;
+    }
+
+    /**
+     * Gets sales_channels
+     *
+     * @return \MedusaWP\MedusaClient\Store\Model\SalesChannel[]|null
+     */
+    public function getSalesChannels()
+    {
+        return $this->container['sales_channels'];
+    }
+
+    /**
+     * Sets sales_channels
+     *
+     * @param \MedusaWP\MedusaClient\Store\Model\SalesChannel[]|null $sales_channels The associated sales channels.
+     *
+     * @return self
+     */
+    public function setSalesChannels($sales_channels)
+    {
+        if (is_null($sales_channels)) {
+            array_push($this->openAPINullablesSetToNull, 'sales_channels');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sales_channels', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sales_channels'] = $sales_channels;
 
         return $this;
     }

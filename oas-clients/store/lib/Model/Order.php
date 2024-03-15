@@ -113,7 +113,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'returnable_items' => '\MedusaWP\MedusaClient\Store\Model\LineItem[]',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'metadata' => 'object'
+        'metadata' => 'object',
+        'sales_channels' => '\MedusaWP\MedusaClient\Store\Model\SalesChannel[]'
     ];
 
     /**
@@ -179,7 +180,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'returnable_items' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'metadata' => null
+        'metadata' => null,
+        'sales_channels' => null
     ];
 
     /**
@@ -243,7 +245,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
 		'returnable_items' => false,
 		'created_at' => false,
 		'updated_at' => false,
-		'metadata' => true
+		'metadata' => true,
+		'sales_channels' => true
     ];
 
     /**
@@ -387,7 +390,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'returnable_items' => 'returnable_items',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'sales_channels' => 'sales_channels'
     ];
 
     /**
@@ -451,7 +455,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'returnable_items' => 'setReturnableItems',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'sales_channels' => 'setSalesChannels'
     ];
 
     /**
@@ -515,7 +520,8 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'returnable_items' => 'getReturnableItems',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'sales_channels' => 'getSalesChannels'
     ];
 
     /**
@@ -706,6 +712,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('sales_channels', $data ?? [], null);
     }
 
     /**
@@ -2469,6 +2476,40 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets sales_channels
+     *
+     * @return \MedusaWP\MedusaClient\Store\Model\SalesChannel[]|null
+     */
+    public function getSalesChannels()
+    {
+        return $this->container['sales_channels'];
+    }
+
+    /**
+     * Sets sales_channels
+     *
+     * @param \MedusaWP\MedusaClient\Store\Model\SalesChannel[]|null $sales_channels The associated sales channels.
+     *
+     * @return self
+     */
+    public function setSalesChannels($sales_channels)
+    {
+        if (is_null($sales_channels)) {
+            array_push($this->openAPINullablesSetToNull, 'sales_channels');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sales_channels', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sales_channels'] = $sales_channels;
 
         return $this;
     }

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit83a66041aa845ec6d41ad7f058ed14ae
+class ComposerStaticInitf2992a7f8df82e23bca906cb283e106f
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -25,7 +25,7 @@ class ComposerStaticInit83a66041aa845ec6d41ad7f058ed14ae
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
-        '45a16669595eb3c0a9e2994e57fc3188' => __DIR__ . '/..' . '/yahnis-elsts/plugin-update-checker/load-v5p3.php',
+        'd05ecc14ff93fd612a81ec7e8ab4c2c9' => __DIR__ . '/..' . '/yahnis-elsts/plugin-update-checker/load-v5p4.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -828,6 +828,7 @@ class ComposerStaticInit83a66041aa845ec6d41ad7f058ed14ae
         'PharIo\\Manifest\\ManifestLoader' => __DIR__ . '/..' . '/phar-io/manifest/src/ManifestLoader.php',
         'PharIo\\Manifest\\ManifestLoaderException' => __DIR__ . '/..' . '/phar-io/manifest/src/exceptions/ManifestLoaderException.php',
         'PharIo\\Manifest\\ManifestSerializer' => __DIR__ . '/..' . '/phar-io/manifest/src/ManifestSerializer.php',
+        'PharIo\\Manifest\\NoEmailAddressException' => __DIR__ . '/..' . '/phar-io/manifest/src/exceptions/NoEmailAddressException.php',
         'PharIo\\Manifest\\PhpElement' => __DIR__ . '/..' . '/phar-io/manifest/src/xml/PhpElement.php',
         'PharIo\\Manifest\\PhpExtensionRequirement' => __DIR__ . '/..' . '/phar-io/manifest/src/values/PhpExtensionRequirement.php',
         'PharIo\\Manifest\\PhpVersionRequirement' => __DIR__ . '/..' . '/phar-io/manifest/src/values/PhpVersionRequirement.php',
@@ -1076,9 +1077,9 @@ class ComposerStaticInit83a66041aa845ec6d41ad7f058ed14ae
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit83a66041aa845ec6d41ad7f058ed14ae::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit83a66041aa845ec6d41ad7f058ed14ae::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit83a66041aa845ec6d41ad7f058ed14ae::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf2992a7f8df82e23bca906cb283e106f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf2992a7f8df82e23bca906cb283e106f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf2992a7f8df82e23bca906cb283e106f::$classMap;
 
         }, null, ClassLoader::class);
     }

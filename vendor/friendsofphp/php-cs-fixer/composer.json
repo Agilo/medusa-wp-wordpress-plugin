@@ -21,11 +21,12 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
+        "ext-filter": "*",
         "ext-json": "*",
         "ext-tokenizer": "*",
         "composer/semver": "^3.4",
         "composer/xdebug-handler": "^3.0.3",
-        "sebastian/diff": "^4.0 || ^5.0",
+        "sebastian/diff": "^4.0 || ^5.0 || ^6.0",
         "symfony/console": "^5.4 || ^6.0 || ^7.0",
         "symfony/event-dispatcher": "^5.4 || ^6.0 || ^7.0",
         "symfony/filesystem": "^5.4 || ^6.0 || ^7.0",
@@ -46,8 +47,8 @@
         "php-cs-fixer/accessible-object": "^1.1",
         "php-cs-fixer/phpunit-constraint-isidenticalstring": "^1.4",
         "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.4",
-        "phpunit/phpunit": "^9.6",
-        "symfony/phpunit-bridge": "^6.3.8 || ^7.0",
+        "phpunit/phpunit": "^9.6 || ^10.5.5 || ^11.0.2",
+        "symfony/var-dumper": "^5.4 || ^6.0 || ^7.0",
         "symfony/yaml": "^5.4 || ^6.0 || ^7.0"
     },
     "suggest": {
@@ -109,6 +110,7 @@
             "./dev-tools/check_file_permissions.sh",
             "./dev-tools/check_trailing_spaces.sh",
             "@normalize",
+            "@unused-deps",
             "@require-checker",
             "@auto-review"
         ],
@@ -124,11 +126,15 @@
         ],
         "test:coverage": [
             "Composer\\Config::disableProcessTimeout",
-            "paraunit coverage --testsuite unit --exclude-group covers-nothing"
+            "@composer show facile-it/paraunit ^2 && (paraunit coverage --testsuite unit --pass-through=--exclude-group=covers-nothing) || (paraunit coverage --testsuite unit --exclude-group covers-nothing)"
         ],
         "test:integration": [
             "Composer\\Config::disableProcessTimeout",
             "paraunit run --testsuite integration"
+        ],
+        "test:short-open-tag": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php -d short_open_tag=1 ./vendor/bin/phpunit --do-not-cache-result --testsuite short-open-tag"
         ],
         "test:smoke": [
             "Composer\\Config::disableProcessTimeout",
@@ -137,7 +143,8 @@
         "test:unit": [
             "Composer\\Config::disableProcessTimeout",
             "paraunit run --testsuite unit"
-        ]
+        ],
+        "unused-deps": "@php dev-tools/vendor/bin/composer-unused --excludePackage=composer/xdebug-handler"
     },
     "scripts-descriptions": {
         "auto-review": "Execute Auto-review",
@@ -161,7 +168,9 @@
         "test:all": "Run Unit and Integration tests (but *NOT* Smoke tests)",
         "test:coverage": "Run tests that provide code coverage",
         "test:integration": "Run Integration tests",
+        "test:short-open-tag": "Run tests with \"short_open_tag\" enabled",
         "test:smoke": "Run Smoke tests",
-        "test:unit": "Run Unit tests"
+        "test:unit": "Run Unit tests",
+        "unused-deps": "Verifies if app has dependencies that are not used"
     }
 }

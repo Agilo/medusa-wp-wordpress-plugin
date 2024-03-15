@@ -108,6 +108,16 @@ final class OrderedInterfacesFixer extends AbstractFixer implements Configurable
         );
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * Must run after FullyQualifiedStrictTypesFixer.
+     */
+    public function getPriority(): int
+    {
+        return 0;
+    }
+
     public function isCandidate(Tokens $tokens): bool
     {
         return $tokens->isTokenKindFound(T_IMPLEMENTS)
@@ -167,7 +177,7 @@ final class OrderedInterfacesFixer extends AbstractFixer implements Configurable
                 $score = self::ORDER_LENGTH === $this->configuration[self::OPTION_ORDER]
                     ? \strlen($first['normalized']) - \strlen($second['normalized'])
                     : (
-                        $this->configuration['case_sensitive']
+                        true === $this->configuration['case_sensitive']
                         ? $first['normalized'] <=> $second['normalized']
                         : strcasecmp($first['normalized'], $second['normalized'])
                     );

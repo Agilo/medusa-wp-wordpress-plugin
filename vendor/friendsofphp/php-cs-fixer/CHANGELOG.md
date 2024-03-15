@@ -3,6 +3,241 @@ CHANGELOG for PHP CS Fixer
 
 This file contains changelogs for stable releases only.
 
+Changelog for v3.51.0
+---------------------
+
+* chore: add missing tests for non-documentation classes (#7848)
+* chore: do not perform type analysis in tests (#7852)
+* chore: list over array in more places (#7857)
+* chore: tests documentation classes (#7855)
+* feat: `@Symfony` - add nullable_type_declaration (#7856)
+* test: fix wrong type in param annotation (#7858)
+
+Changelog for v3.50.0
+---------------------
+
+* chore: add missing types (#7842)
+* chore: BlocksAnalyzer - raise exception on invalid index (#7819)
+* chore: DataProviderAnalysis - expect list over array (#7800)
+* chore: do not use `@large` on method level (#7832)
+* chore: do not use `@medium` on method level (#7833)
+* chore: Fix typos (#7835)
+* chore: rename variables (#7847)
+* chore: some improvements around array typehints (#7799)
+* CI: fix PHP 8.4 job (#7829)
+* DX: Include `symfony/var-dumper` in dev tools (#7795)
+* feat: Ability to remove unused imports from multi-use statements (#7815)
+* feat: allow PHPUnit 11 (#7824)
+* feat: Allow shortening symbols from multi-use statements (only classes for now) (#7816)
+* feat: introduce `PhpdocArrayTypeFixer` (#7812)
+* feat: PhpUnitTestCaseStaticMethodCallsFixer - cover PHPUnit v11 methods (#7822)
+* feat: Support for multi-use statements in `NamespaceUsesAnalyzer` (#7814)
+* feat: `MbStrFunctionsFixer` - add support for `mb_trim`, `mb_ltrim` and `mb_rtrim` functions (#7840)
+* feat: `NoEmptyPhpdocFixer` - do not leave empty line after removing PHPDoc (#7820)
+* feat: `no_superfluous_phpdoc_tags` - introduce `allow_future_params` option (#7743)
+* fix: do not use wrongly named arguments in data providers (#7823)
+* fix: Ensure PCNTL extension is always installed in Docker (#7782)
+* fix: PhpdocListTypeFixer - support key types containing `<…>` (#7817)
+* fix: Proper build target for local Docker Compose (#7834)
+* fix: union PHPDoc support in `fully_qualified_strict_types` fixer (#7719)
+* fix: `ExecutorWithoutErrorHandler` - remove invalid PHP 7.4 type (#7845)
+* fix: `fully_qualified_strict_types` must honor template/local type identifiers (#7724)
+* fix: `MethodArgumentSpaceFixer` - do not break heredoc/nowdoc (#7828)
+* fix: `NumericLiteralSeparatorFixer` - do not change `float` to `int` when there is nothing after the dot (#7805)
+* fix: `PhpUnitStrictFixer` - do not crash on property having the name of method to fix (#7804)
+* fix: `SingleSpaceAroundConstructFixer` - correctly recognise multiple constants (#7700)
+* fix: `TypeExpression` - handle array shape key with dash (#7841)
+
+Changelog for v3.49.0
+---------------------
+
+* chore(checkbashisms): update to 2.23.7 (#7780)
+* chore: add missing key types in PHPDoc types (#7779)
+* chore: Exclude `topic/core` issues/PRs from Stale Bot (#7788)
+* chore: `DescribeCommand` - better handling of deprecations (#7778)
+* docs: docker - use gitlab reporter in GitLab integration example (#7764)
+* docs: docker in CI - don't suggest command that overrides path from config file (#7763)
+* DX: check deprecations exactly (#7742)
+* feat: Add `ordered_types` to `@Symfony` (#7356)
+* feat: introduce `PhpdocListTypeFixer` (#7796)
+* feat: introduce `string_implicit_backslashes` as `escape_implicit_backslashes` replacement (#7669)
+* feat: update `Symfony.nullable_type_declaration_for_default_null_value` config (#7773)
+* feat: `@PhpCsFixer` ruleset - enable `php_unit_data_provider_static` (#7685)
+* fix: Allow using cache when running in Docker distribution (#7769)
+* fix: ClassDefinitionFixer for anonymous class with phpdoc/attribute on separate line (#7546)
+* fix: `ClassKeywordFixer` must run before `FullyQualifiedStrictTypesFixer` (#7767)
+* fix: `function_to_constant` `get_class()` replacement (#7770)
+* fix: `LowercaseStaticReferenceFixer` - do not change typed constants (#7775)
+* fix: `PhpdocTypesFixer` - handle more complex types (#7791)
+* fix: `TypeExpression` - do not break type using `walkTypes` method (#7785)
+
+Changelog for v3.48.0
+---------------------
+
+* chore: `FullyQualifiedStrictTypesFixer` must run before `OrderedInterfacesFixer` (#7762)
+* docs: Add PHP-CS-Fixer integration in a GitHub Action step (#7757)
+* feat: `PhpdocTypesOrderFixer` Support DNF types (#7732)
+* fix: Support shebang in fixers operating on PHP opening tag (#7687)
+* fix: work correctly for a switch/case with ternary operator (#7756)
+* fix: `NoUselessConcatOperatorFixer` - do not remove new line (#7759)
+
+Changelog for v3.47.1
+---------------------
+
+* fix: Do not override short name with relative reference (#7752)
+* fix: make `BinaryOperatorSpacesFixer` work as pre-v3.47 (#7751)
+* fix: Proper Docker image name suffix (#7739)
+* fix: `FullyQualifiedStrictTypesFixer` - do not change case of the symbol when there's name collision between imported class and imported function (#7750)
+* fix: `FullyQualifiedStrictTypesFixer` - do not modify statements with property fetch and `::` (#7749)
+
+Changelog for v3.47.0
+---------------------
+
+* chore: better identify EXPERIMENTAL rules (#7729)
+* chore: fix issue detected by unlocked PHPStan + upgrade dev-tools (#7678)
+* chore: handle extract() (#7684)
+* chore: Mention contributors in app info (#7668)
+* chore: no need to mark private methods as internal (#7715)
+* chore: ProjectCodeTests - dry for function usage extractions (#7690)
+* chore: reduce PHPStan baseline (#7644)
+* chore: use numeric literal separator for PHP version IDs (#7712)
+* chore: use numeric_literal_separator for project (#7713)
+* chore: Utils::sortElements - better typing (#7646)
+* CI: Allow running Stale Bot on demand (#7711)
+* CI: Fix PHP 8.4 (#7702)
+* CI: Give write permissions to Stale Bot (#7716)
+* CI: Use `actions/stale` v9 (#7710)
+* docs: Add information about allowing maintainers to update PRs (#7683)
+* docs: CONTRIBUTING.md - update Opening a PR (#7691)
+* docs: Display/include tool info/version by default in commands and reports (#7733)
+* DX: fix deprecation tests warnings for PHP 7.4 (#7725)
+* DX: update `host.docker.internal` in Compose override template (#7661)
+* DX: `NumericLiteralSeparatorFixer` - change default strategy to `use_separator` (#7730)
+* feat: Add support for official Docker images of Fixer (#7555)
+* feat: Add `spacing` option to `PhpdocAlignFixer` (#6505)
+* feat: Add `union_types` option to `phpdoc_to_param_type`, `phpdoc_to_property_type`, and `phpdoc_to_return_type` fixers (#7672)
+* feat: Introduce `heredoc_closing_marker` fixer (#7660)
+* feat: Introduce `multiline_string_to_heredoc` fixer (#7665)
+* feat: Introduce `NumericLiteralSeparatorFixer` (#6761)
+* feat: no_superfluous_phpdoc_tags - support for arrow function (#7666)
+* feat: Simplify closing marker when possible in `heredoc_closing_marker` fixer (#7676)
+* feat: Support typed properties and attributes in `fully_qualified_strict_types` (#7659)
+* feat: `@PhpCsFixer` ruleset - enable no_whitespace_before_comma_in_array.after_heredoc (#7670)
+* fix: Improve progress bar visual layer (#7708)
+* fix: indentation of control structure body without braces (#7663)
+* fix: make sure all PHP extensions required by PHPUnit are installed (#7727)
+* fix: PhpdocToReturnTypeFixerTest - support for arrow functions (#7645)
+* fix: Several improvements for `fully_qualified_strict_types` (respect declared symbols, relative imports, leading backslash in global namespace) (#7679)
+* fix: SimplifiedNullReturnFixer - support array return typehint (#7728)
+* fix: Support numeric values without leading zero in `numeric_literal_separator` (#7735)
+* fix: `BinaryOperatorSpacesFixer` - align correctly when multiple shifts occurs in single line (#7593)
+* fix: `ClassReferenceNameCasingFixer` capitalizes the property name after the nullsafe operator (#7696)
+* fix: `fully_qualified_strict_types` with `leading_backslash_in_global_namespace` enabled - handle reserved types in phpDoc (#7648)
+* fix: `NoSpaceAroundDoubleColonFixer` must run before `MethodChainingIndentationFixer` (#7723)
+* fix: `no_superfluous_phpdoc_tags` must honor multiline docs (#7697)
+* fix: `numeric_literal_separator` - Handle zero-leading floats properly (#7737)
+* refactor: increase performance by ~7% thanks to `Tokens::block*Cache` hit increased by ~12% (#6176)
+* refactor: Tokens - fast check for non-block in 'detectBlockType', evaluate definitions only once in 'getBlockEdgeDefinitions' (#7655)
+* refactor: `Tokens::clearEmptyTokens` - play defensive with cache clearing (#7658)
+* test: ensure we do not forget to test any short_open_tag test (#7638)
+
+Changelog for v3.46.0
+---------------------
+
+* chore: fix internal typehints in Tokens (#7656)
+* chore: reduce PHPStan baseline (#7643)
+* docs: Show class with unit tests and BC promise info (#7667)
+* feat: change default ruleset to `@PER-CS` (only behind PHP_CS_FIXER_FUTURE_MODE=1) (#7650)
+* feat: Support new/instanceof/use trait in `fully_qualified_strict_types` (#7653)
+* fix: FQCN parse phpdoc using full grammar regex (#7649)
+* fix: Handle FQCN properly with `leading_backslash_in_global_namespace` option enabled (#7654)
+* fix: PhpdocToParamTypeFixerTest - support for arrow functions (#7647)
+* fix: PHP_CS_FIXER_FUTURE_MODE - proper boolean validation (#7651)
+
+Changelog for v3.45.0
+---------------------
+
+* feat: Enable symbol importing in `@PhpCsFixer` ruleset (#7629)
+* fix: NoUnneededBracesFixer - improve handling of global namespace (#7639)
+* test: run tests with "short_open_tag" enabled (#7637)
+
+Changelog for v3.44.0
+---------------------
+
+* feat: Introduce percentage bar as new default progress output (#7603)
+
+Changelog for v3.43.1
+---------------------
+
+* fix: Import only unique symbols' short names (#7635)
+
+Changelog for v3.43.0
+---------------------
+
+* chore: change base of `@Symfony` set to `@PER-CS2.0` (#7627)
+* chore: PHPUnit - allow for v10 (#7606)
+* chore: Preg - rework catching the error (#7616)
+* chore: Revert unneeded peer-dep-pin and re-gen lock file (#7618)
+* docs: drop extra note about 8.0.0 bug in README.md (#7614)
+* feat: add cast_spaces into `@PER-CS2.0` (#7625)
+* feat: Configurable phpDoc tags for FQCN processing (#7628)
+* feat: StatementIndentationFixer - introduce stick_comment_to_next_continuous_control_statement config (#7624)
+* feat: UnaryOperatorSpacesFixer - introduce only_dec_inc config (#7626)
+* fix: FullyQualifiedStrictTypesFixer - better support annotations in inline {} (#7633)
+* fix: Improve how FQCN is handled in phpDoc (#7622)
+* fix: phpdoc_align - fix multiline tag alignment issue (#7630)
+
+Changelog for v3.42.0
+---------------------
+
+* chore: aim to not rely on internal array pointer but use array_key_first (#7613)
+* chore: deprecate Token::isKeyCaseSensitive (#7599)
+* chore: deprecate Token::isKeyCaseSensitive, 2nd part (#7601)
+* chore: do not check PHP_VERSION_ID (#7602)
+* chore: FileFilterIteratorTest - more accurate type in docs (#7542)
+* chore: minor code cleanup (#7607)
+* chore: more types (#7598)
+* chore: PHPDoc key-value spacing (#7592)
+* chore: PHPUnit - run defects first (#7570)
+* chore: ProjectCodeTest - DRY on Tokens creation (#7574)
+* chore: ProjectCodeTest - prepare for symfony/console v7 (#7605)
+* chore: ProjectCodeTest::provide*ClassCases to return iterable with key for better tests execution log (#7572)
+* chore: ProjectCodeTest::testDataProvidersDeclaredReturnType - use better DataProvider to simplify test logic (#7573)
+* chore: TokensAnalyzer - string-enum for better typehinting (#7571)
+* chore: unify tests not agnostic of PHP version (#7581)
+* chore: use ::class more (#7545)
+* CI: Introduce `composer-unused` (#7536)
+* DX: add types to anonymous functions (#7561)
+* DX: Allow running smoke tests within Docker runtime (#7608)
+* DX: check fixer's options for wording (#7543)
+* DX: cleanup deprecation message (#7576)
+* DX: do not allow overriding constructor of `PHPUnit\Framework\TestCase` (#7563)
+* DX: do not import ExpectDeprecationTrait in UtilsTest (#7562)
+* DX: Enforce consistent naming in tests (#7556)
+* DX: fix checking test class extends `PhpCsFixer\Tests\TestCase` (#7567)
+* DX: make sure that exceptions in `AbstractFixerTestCase::testProperMethodNaming` are not already fixed (#7588)
+* DX: remove recursion from AbstractIntegrationTestCase::testIntegration (#7577)
+* DX: remove `PhpUnitNamespacedFixerTest::testClassIsFixed` (#7564)
+* DX: remove `symfony/phpunit-bridge` (#7578)
+* DX: replace fixture classes with anonymous ones (#7533)
+* DX: Unify Docker mount points and paths (#7549)
+* DX: unify fixer's test method names - quick wins (#7584)
+* DX: unify tests for casing fixers (#7558)
+* DX: use anonymous function over concrete classes (#7553)
+* feat(EXPERIMENTAL): ClassKeywordFixer (#2918)
+* feat(EXPERIMENTAL): ClassKeywordFixer, part 2 (#7550)
+* feat(PhpdocToCommentFixer): Add option to handle return as valid docblock usage (#7401) (#7402)
+* feat: Ability to import FQCNs found during analysis (#7597)
+* feat: add phpDoc support for `fully_qualified_strict_types` fixer (#5620)
+* feat: Handle deprecated rule sets similarly to deprecated fixers (#7288)
+* feat: PhpUnitTestCaseStaticMethodCallsFixer - cover PHPUnit v10 methods (#7604)
+* feat: Support more FQCNs cases in `fully_qualified_strict_types` (#7459)
+* fix: AbstractFixerTestCase - fix checking for correct casing (#7540)
+* fix: Better OS detection in integration tests (#7547)
+* fix: NativeTypeDeclarationCasingFixe - handle static property without type (#7589)
+* test: AutoReview - unify data provider returns (#7544)
+* test: check to have DataProviders code agnostic of PHP version (#7575)
+
 Changelog for v3.41.1
 ---------------------
 

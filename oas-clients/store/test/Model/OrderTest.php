@@ -582,4 +582,13 @@ class OrderTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "sales_channels"
+     */
+    public function testPropertySalesChannels()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

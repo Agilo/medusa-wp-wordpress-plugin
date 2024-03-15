@@ -159,4 +159,31 @@ class SalesChannelTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "carts"
+     */
+    public function testPropertyCarts()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "orders"
+     */
+    public function testPropertyOrders()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "publishable_keys"
+     */
+    public function testPropertyPublishableKeys()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

@@ -36,6 +36,14 @@ use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  * @author Darius Matulionis <darius@matulionis.lt>
  * @author Adriano Pilger <adriano.pilger@gmail.com>
+ *
+ * @phpstan-type _UseImportInfo array{
+ *  namespace: non-empty-string,
+ *  startIndex: int,
+ *  endIndex: int,
+ *  importType: self::IMPORT_TYPE_*,
+ *  group: bool,
+ * }
  */
 final class OrderedImportsFixer extends AbstractFixer implements ConfigurableFixerInterface, WhitespacesAwareFixerInterface
 {
@@ -175,7 +183,7 @@ use Bar;
      * {@inheritdoc}
      *
      * Must run before BlankLineBetweenImportGroupsFixer.
-     * Must run after GlobalNamespaceImportFixer, NoLeadingImportSlashFixer.
+     * Must run after FullyQualifiedStrictTypesFixer, GlobalNamespaceImportFixer, NoLeadingImportSlashFixer.
      */
     public function getPriority(): int
     {
@@ -277,10 +285,8 @@ use Bar;
     /**
      * This method is used for sorting the uses in a namespace.
      *
-     * @param array<string, bool|int|string> $first
-     * @param array<string, bool|int|string> $second
-     *
-     * @internal
+     * @param _UseImportInfo $first
+     * @param _UseImportInfo $second
      */
     private function sortAlphabetically(array $first, array $second): int
     {
@@ -296,10 +302,8 @@ use Bar;
     /**
      * This method is used for sorting the uses statements in a namespace by length.
      *
-     * @param array<string, bool|int|string> $first
-     * @param array<string, bool|int|string> $second
-     *
-     * @internal
+     * @param _UseImportInfo $first
+     * @param _UseImportInfo $second
      */
     private function sortByLength(array $first, array $second): int
     {
@@ -327,6 +331,8 @@ use Bar;
 
     /**
      * @param list<int> $uses
+     *
+     * @return array<int, _UseImportInfo>
      */
     private function getNewOrder(array $uses, Tokens $tokens): array
     {
@@ -511,27 +517,9 @@ use Bar;
     }
 
     /**
-     * @param array<
-     *     int,
-     *     array{
-     *         namespace: string,
-     *         startIndex: int,
-     *         endIndex: int,
-     *         importType: string,
-     *         group: bool,
-     *     }
-     * > $indices
+     * @param array<int, _UseImportInfo> $indices
      *
-     * @return array<
-     *     int,
-     *     array{
-     *         namespace: string,
-     *         startIndex: int,
-     *         endIndex: int,
-     *         importType: string,
-     *         group: bool,
-     *     }
-     * >
+     * @return array<int, _UseImportInfo>
      */
     private function sortByAlgorithm(array $indices): array
     {
@@ -545,13 +533,7 @@ use Bar;
     }
 
     /**
-     * @param array<int, array{
-     *     namespace: string,
-     *     startIndex: int,
-     *     endIndex: int,
-     *     importType: string,
-     *     group: bool,
-     * }> $usesOrder
+     * @param array<int, _UseImportInfo> $usesOrder
      */
     private function setNewOrder(Tokens $tokens, array $usesOrder): void
     {

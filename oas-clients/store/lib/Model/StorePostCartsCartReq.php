@@ -35,6 +35,7 @@ use \MedusaWP\MedusaClient\Store\ObjectSerializer;
  * StorePostCartsCartReq Class Doc Comment
  *
  * @category Class
+ * @description The details to update of the cart.
  * @package  MedusaWP\MedusaClient\Store
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

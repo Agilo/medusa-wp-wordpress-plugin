@@ -15,12 +15,14 @@ declare(strict_types=1);
 namespace PhpCsFixer\Console\Command;
 
 use PhpCsFixer\Config;
+use PhpCsFixer\Console\Application;
 use PhpCsFixer\Console\ConfigurationResolver;
 use PhpCsFixer\Differ\DiffConsoleFormatter;
 use PhpCsFixer\Differ\FullDiffer;
 use PhpCsFixer\Documentation\FixerDocumentGenerator;
 use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
+use PhpCsFixer\Fixer\ExperimentalFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerConfiguration\AliasedFixerOption;
 use PhpCsFixer\FixerConfiguration\AllowedValueSubset;
@@ -53,10 +55,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'describe')]
 final class DescribeCommand extends Command
 {
+    /** @var string */
     protected static $defaultName = 'describe';
 
     /**
-     * @var string[]
+     * @var ?list<string>
      */
     private $setNames;
 
@@ -94,9 +97,9 @@ final class DescribeCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        if (OutputInterface::VERBOSITY_VERBOSE <= $output->getVerbosity() && $output instanceof ConsoleOutputInterface) {
+        if ($output instanceof ConsoleOutputInterface) {
             $stdErr = $output->getErrorOutput();
-            $stdErr->writeln($this->getApplication()->getLongVersion());
+            $stdErr->writeln(Application::getAboutWithRuntime(true));
         }
 
         $resolver = new ConfigurationResolver(
@@ -162,8 +165,11 @@ final class DescribeCommand extends Command
         if ($fixer instanceof DeprecatedFixerInterface) {
             $successors = $fixer->getSuccessorsNames();
             $message = [] === $successors
-                ? 'will be removed in the next major version'
+                ? sprintf('it will be removed in version %d.0', Application::getMajorVersion() + 1)
                 : sprintf('use %s instead', Utils::naturalLanguageJoinWithBackticks($successors));
+
+            $endMessage = '. '.ucfirst($message);
+            Utils::triggerDeprecation(new \RuntimeException(str_replace('`', '"', "Rule \"{$name}\" is deprecated{$endMessage}.")));
             $message = Preg::replace('/(`[^`]+`)/', '<info>$1</info>', $message);
             $output->writeln(sprintf('<error>DEPRECATED</error>: %s.', $message));
             $output->writeln('');
@@ -179,8 +185,15 @@ final class DescribeCommand extends Command
 
         $output->writeln('');
 
+        if ($fixer instanceof ExperimentalFixerInterface) {
+            $output->writeln('<error>Fixer applying this rule is EXPERIMENTAL.</error>.');
+            $output->writeln('It is not covered with backward compatibility promise and may produce unstable or unexpected results.');
+
+            $output->writeln('');
+        }
+
         if ($fixer->isRisky()) {
-            $output->writeln('<error>Fixer applying this rule is risky.</error>');
+            $output->writeln('<error>Fixer applying this rule is RISKY.</error>');
 
             $riskyDescription = $definition->getRiskyDescription();
 
@@ -400,7 +413,7 @@ final class DescribeCommand extends Command
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     private function getSetNames(): array
     {
